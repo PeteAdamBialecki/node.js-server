@@ -1,45 +1,46 @@
 var Profile = require("./profile.js");
+var renderer = require("./renderer.js");
+
+var commonHeaders = {'Content-Type': 'text/html'}
 
 function home(request, response) {
     if(request.url === '/') {
-    response.statusCode = 200;
-    response.setHeader('Content-Type', 'text/plain');
-    response.write('Header\n');
-    response.write('Search\n');
-    response.end('Footer\n');
+        response.writeHead(200, commonHeaders);
+        renderer.view('header', {}, response);
+        renderer.view('search', {}, response);
+        renderer.view('footer', {}, response);
+        response.end();
     }
 }
 
 function user(request, response) {
-    let username = request.url.replace('/','');
+    var username = request.url.replace('/','');
         if (username.length > 0) {
-            response.setHeader('Content-Type', 'text/plain');
-            response.write('Header\n');
+            response.writeHead(200, commonHeaders);
+            renderer.view('header', {}, response);
 
             var studentProfile = new Profile(username);
-
             studentProfile.on('end', function(profileJSON){
+
                 var values = {
-                    avatarUrl: profileJSON.gravatr_url,
+                    avatarUrl: profileJSON.gravatar_url,
                     username: profileJSON.profile_name,
                     badges: profileJSON.badges.length,
-                    javascritPoints: profileJSON.points.length,
+                    javascriptPoints: profileJSON.points.JavaScript
                 }
-                response.write(values.username + ' has ' + values.badges + ' badges.\n');
-                response.end('Footer\n');
+                renderer.view('profile', values, response)
+                renderer.view('footer', {}, response)
+                response.end();
             });
 
             studentProfile.on('error', function(error){
-                response.write(error.message + '\n');
-                response.end('Footer\n');
+                renderer.view('error', {errorMessage: error.message}, response);
+                renderer.view('search', {}, response);
+                renderer.view('footer', {}, response);
+                response.end();
             });
         }
 }
-
-
-
-
-
 
 module.exports.home = home;
 module.exports.user = user;
