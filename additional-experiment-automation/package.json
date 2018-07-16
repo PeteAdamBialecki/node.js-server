@@ -1,0 +1,17 @@
+{
+  "name": "gulp-testing",
+  "version": "1.0.1",
+  "description": "Gulp Basics",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Pete Bialecki",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "http-server": "^0.11.1",
+    "node": "^10.6.0",
+    "npm": "^6.2.0"
+  }
+}
