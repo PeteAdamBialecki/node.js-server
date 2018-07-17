@@ -1,24 +1,10 @@
 {
-  "name": "gulp-testing",
-  "version": "1.0.1",
-  "description": "Gulp Basics",
-  "main": "index.js",
-  "scripts": {
-    "test": "test"
-  },
-  "author": "Pete Bialecki",
-  "license": "ISC",
   "devDependencies": {
-    "gulp": "^4.0.0",
-    "gulp-util": "^3.0.8",
+    "gulp": "^3.9.1",
     "gulp-coffee": "^3.0.2",
     "gulp-concat": "^2.6.1",
     "gulp-connect": "^5.5.0",
     "gulp-sass": "^4.0.1",
-    "gulp-uglify": "^3.0.0",
-    "http-server": "^0.11.1",
-    "node": "^10.6.0",
-    "npm": "^6.2.0"
-  },
-  "dependencies": {}
+    "gulp-uglify": "^3.0.0"
+  }
 }
