@@ -1,0 +1,1 @@
+{"version":3,"file":"main.css","sources":["main.scss"],"sourcesContent":["$primary-color: #A37;\n\n#title {\n\t  color: $primary-color;\n}\n\nh1 { \n\ttext-align: center;\n }\n \n"],"names":[],"mappings":"AAEA,AAAA,MAAM,CAAC;EACJ,KAAK,EAHQ,IAAI,GAInB;;AAED,AAAA,EAAE,CAAC;EACF,UAAU,EAAE,MAAM,GACjB"}
