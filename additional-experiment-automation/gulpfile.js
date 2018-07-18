@@ -6,12 +6,13 @@ var gulp = require('gulp'),
     connect = require('gulp-connect'),
     uglify = require('gulp-uglify'),
     concat = require('gulp-concat');
+    del = require('del');
 
 var coffeeSources = ['scripts/hello.coffee'],
     jsSources = ['scripts/*.js'],
     sassSources = ['styles/*.scss'],
     htmlSources = ['**/*.html'],
-    outputDir = 'dist';
+    outputDir = 'assets';
 
 
 gulp.task('log', function() {
@@ -29,7 +30,7 @@ gulp.task('sass', function() {
     .pipe(sass({style: 'expanded'}))
     .on('error', gutil.log)
     .pipe(maps.write('./'))
-    .pipe(gulp.dest('dist'))
+    .pipe(gulp.dest('assets'))
     .pipe(connect.reload())
 });
 
@@ -69,4 +70,4 @@ gulp.task('html', function() {
     .pipe(connect.reload())
 });
 
-gulp.task('default', ['html', 'coffee', 'js', 'sass', 'connect', 'watch']);
+gulp.task('default', ['log', 'copy', 'html', 'coffee', 'js', 'sass', 'connect', 'watch']);
