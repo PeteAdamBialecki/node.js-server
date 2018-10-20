@@ -1,4 +1,3 @@
-var jsonData = require('./us.json')
 var Profile = require("./profile.js");
 var renderer = require("./renderer.js");
 var querystring = require('querystring');
