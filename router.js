@@ -7,7 +7,7 @@ function home(request, response) {
         if(request.method.toLowerCase() === 'get') {
         response.writeHead(200, commonHeaders);
         renderer.view('header', {}, response);
-        renderer.view('search', {}, response);
+        renderer.view('index', {}, response);
         renderer.view('footer', {}, response);
         response.end();
         } else {
@@ -42,7 +42,7 @@ function user(request, response) {
 
             studentProfile.on('error', function(error){
                 renderer.view('error', {errorMessage: error.message}, response);
-                renderer.view('search', {}, response);
+                renderer.view('index', {}, response);
                 renderer.view('footer', {}, response);
                 response.end();
             });
