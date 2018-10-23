@@ -13,18 +13,25 @@ function home(request, response) {
         } else {
             request.on('data', function(postBody){
                 var query = querystring.parse(postBody.toString());
-                response.writeHead(303, {'Location': '/' + query.sample});
+                response.writeHead(303, {'Location': '/' + query.username});
                 response.end();
             });
         }
     }
 }
 
-function testRoute(request, response) {
-    var sample = request.url.replace('/','');
-        if (sample.length > 0) {
+function user(request, response) {
+    var username = request.url.replace('/','');
+        if (username.length > 0) {
             response.writeHead(200, commonHeaders);
             renderer.view('header', {}, response);
+
+            var sample = new Profile(username);
+            sample.on('end', function(profileJSON){
+                renderer.view('footer', {}, response)
+                response.end();
+            });
+
             sample.on('error', function(error){
                 renderer.view('error', {errorMessage: error.message}, response);
                 renderer.view('index', {}, response);
@@ -35,4 +42,4 @@ function testRoute(request, response) {
 }
 
 module.exports.home = home;
-module.exports.testRoute = testRoute;
+module.exports.user = user;
