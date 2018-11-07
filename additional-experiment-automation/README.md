@@ -1,3 +1,3 @@
-# Getting Started With Gulp
+## **Gulp.js**
 
-Gulp example app for the tutorial
+To enable gulp watching, run "gulp" with terminal after cd-ing into directory.
