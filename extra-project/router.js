@@ -1,4 +1,3 @@
-var Profile = require("./profile.js");
 var renderer = require("./renderer.js");
 var querystring = require('querystring');
 var commonHeaders = {'Content-Type': 'text/html'}
@@ -8,7 +7,7 @@ function home(request, response) {
         if(request.method.toLowerCase() === 'get') {
         response.writeHead(200, commonHeaders);
         renderer.view('header', {}, response);
-        renderer.view('search', {}, response);
+        renderer.view('index', {}, response);
         renderer.view('footer', {}, response);
         response.end();
         } else {
@@ -27,23 +26,15 @@ function user(request, response) {
             response.writeHead(200, commonHeaders);
             renderer.view('header', {}, response);
 
-            var studentProfile = new Profile(username);
-            studentProfile.on('end', function(profileJSON){
-
-                var values = {
-                    avatarUrl: profileJSON.gravatar_url,
-                    username: profileJSON.profile_name,
-                    badges: profileJSON.badges.length,
-                    javascriptPoints: profileJSON.points.JavaScript
-                }
-                renderer.view('profile', values, response)
+            var sample = new Profile(username);
+            sample.on('end', function(profileJSON){
                 renderer.view('footer', {}, response)
                 response.end();
             });
 
-            studentProfile.on('error', function(error){
+            sample.on('error', function(error){
                 renderer.view('error', {errorMessage: error.message}, response);
-                renderer.view('search', {}, response);
+                renderer.view('index', {}, response);
                 renderer.view('footer', {}, response);
                 response.end();
             });
