@@ -6,7 +6,6 @@
   "dependencies": {
     "browser-sync": "^2.26.3",
     "del": "^3.0.0",
-    "gulp": "^4.0.0",
     "gulp-clean-css": "^3.10.0",
     "gulp-coffee": "^3.0.2",
     "gulp-concat": "^2.6.1",
@@ -18,7 +17,9 @@
     "gulp-uglify": "^3.0.0",
     "undertaker": "^1.2.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "gulp": "^4.0.0"
+  },
   "scripts": {
     "test": "testing"
   },
