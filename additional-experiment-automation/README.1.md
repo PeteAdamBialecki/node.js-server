@@ -1,2 +1,0 @@
-# PeteAdamBialecki.github.io
-temporary
